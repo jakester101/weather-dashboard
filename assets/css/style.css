@@ -1,0 +1,147 @@
+.controlpanelButtons {
+  border: 1px;
+  border-style: solid;
+  border-color: rgb(190, 190, 190);
+  margin-bottom: 10px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+/* styling for day js row in right large column */
+.dayjsRow {
+  border: 1px;
+  border-style: solid;
+  border-color: rgb(190, 190, 190);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* styling for the calendar week view tables */
+/* Equal width */
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+/* Add gutters */
+.col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* styling for the borders around calendar days */
+.calendarBorders {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+/* styling for notes */
+.notesRow {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#nav {
+  color: rgb(150, 150, 150);
+}
+#nav:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: rgb(39, 39, 39);
+}
+
+#days-of-week {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#noteDialog {
+  align-items: center;
+  border-radius: 25px;
+  border-width: 1px;
+  background-color: white;
+  border-color: rgb(190, 190, 190);
+  border-style: solid;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.calendarStyling {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h6 {
+  font-size: 40px;
+  margin: 20px;
+  text-align: center;
+}
+
+.leftnav {
+  display: flex;
+  align-items: center;
+}
+
+#back-btn {
+  border: 2px;
+  border-style: solid;
+  border-color: rgb(190, 190, 190);
+  justify-content: flex-end;
+  display: flex;
+  font-size: 18px;
+}
+
+.navbar-emp {
+  color:rgb(150, 150, 150);
+}
+
+.emp-head {
+  background-color: rgb(160, 156, 156);
+  color: rgb(2, 2, 2);
+  font-size: 25px;
+  font-style: oblique;
+}
+
+.emp-body {
+  background-color: white;
+  color: black;
+}
+
+#back-btn:hover {
+  background-color: rgb(49, 46, 46);
+  color: white;
+}
+
+h5 {
+  color: black;
+}
+
+#notesArea {
+  text-align: left;
+  border: 1px;
+  border-style: solid;
+  border-color:rgb(190, 190, 190);
+  border-radius: 10px;
+  padding: 5px;
+}
+#to-list {
+  border: 2px;
+  border-style: solid;
+  border-color: rgb(190, 190, 190);
+  margin-bottom: 10px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#to-list:hover {
+  background-color: rgb(49, 46, 46);
+  color: white;
+}
