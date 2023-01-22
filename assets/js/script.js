@@ -1,5 +1,6 @@
 //our api key to make openweathermap.org api calls
 const APIKey = '0ff149e0d223b76a6e7dfbc034fe14c9';
+var dateString = '';
 
 
 let listOfCities = JSON.parse(localStorage.getItem("cities"));
@@ -74,9 +75,10 @@ function displayToday(name){
 
   for(let i = 0; i<listOfCities.length; i++){
     if(listOfCities[i].city.name === name){
-      let dateString = listOfCities[i].list[0].dt_txt
-      let date = new Date(dateString);
-      document.getElementById('todaycity').innerHTML = `${name} ${date.toLocaleDateString('default', {month: 'numeric', day: 'numeric', year: 'numeric'})}`;
+      dateString = listOfCities[i].list[0].dt_txt
+      date = new Date(dateString);
+      date = date.toLocaleDateString('default', {month: 'numeric', day: 'numeric', year: 'numeric'})
+      document.getElementById('todaycity').innerHTML = `${name} ${date}`;
 
       //temp is delivered in Kelvin, so let's convert it to F
       let tempK = listOfCities[i].list[0].main.temp;
@@ -91,7 +93,7 @@ function displayToday(name){
       //print humidity
       let hum = listOfCities[i].list[0].main.humidity
       document.getElementById('todayhum').innerHTML = `Humidity: ${hum}%`;
-
+      //fetch weather icons
       let iconId = listOfCities[i].list[0].weather[0].icon;
       let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
       let iconImg = document.createElement("img");
@@ -100,11 +102,90 @@ function displayToday(name){
       todaycity.appendChild(iconImg);
 
 
-
+      //now that todays data is displayed, let's call a function to
+      //generate the next week schedule
+      displayWeek(listOfCities[i]);
 
     }
   }
 }
+
+
+function displayWeek(city){
+
+
+  //populate day 1,2,3 and 4
+
+  let j = 1;  
+  for(let i = 8; i < 33; i += 8){
+    dateString = city.list[i].dt_txt
+    date = new Date(dateString);
+    date = date.toLocaleDateString('default', {month: 'numeric', day: 'numeric', year: 'numeric'})
+    document.getElementById(`DAY${j}`).innerHTML = `<h3>${date}</h3>`;
+
+    //temp is delivered in Kelvin, so let's convert it to F
+    let tempK = city.list[i].main.temp;
+    let tempF = parseInt(((tempK - 273.15) * (9/5) + 32));
+    
+    //print wind speed
+    let wind = city.list[i].wind.speed;
+
+    //print humidity
+    let hum = city.list[i].main.humidity
+    document.getElementById(`day${j}`).innerHTML = `Temp: ${tempF}\u00B0F<br>Wind: ${wind} MPH<br>Humidity: ${hum}%`;
+
+
+
+    //fetch weather icons
+    let iconId = city.list[i].weather[0].icon;
+    let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+    let iconImg = document.createElement("img");
+    iconImg.src = iconUrl;
+    let todaycity = document.getElementById(`DAY${j}`);
+    todaycity.appendChild(iconImg);
+
+    j++;
+  }
+
+  //populate day 5
+    dateString = city.list[39].dt_txt
+    date = new Date(dateString);
+    date = date.toLocaleDateString('default', {month: 'numeric', day: 'numeric', year: 'numeric'})
+    document.getElementById('DAY5').innerHTML = `<h3>${date}</h3>`;
+
+    //temp is delivered in Kelvin, so let's convert it to F
+    let tempK = city.list[39].main.temp;
+    let tempF = parseInt(((tempK - 273.15) * (9/5) + 32));
+    
+    //print wind speed
+    let wind = city.list[39].wind.speed;
+
+    //print humidity
+    let hum = city.list[39].main.humidity
+    document.getElementById('day5').innerHTML = `Temp: ${tempF}\u00B0F<br>Wind: ${wind} MPH<br>Humidity: ${hum}%`;
+
+    let iconId = city.list[39].weather[0].icon;
+    let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+    let iconImg = document.createElement("img");
+    iconImg.src = iconUrl;
+    let todaycity = document.getElementById('DAY5');
+    todaycity.appendChild(iconImg);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 displayToday('Atlanta');
