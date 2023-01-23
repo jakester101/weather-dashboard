@@ -2,13 +2,9 @@
 const APIKey = '0ff149e0d223b76a6e7dfbc034fe14c9';
 var dateString = '';
 
+const listOfCities = [];
 
-let listOfCities = JSON.parse(localStorage.getItem("cities"));
-console.log(listOfCities);
 
-if (listOfCities == null) {
-  listOfCities = [];
-}
 
 
 
@@ -31,6 +27,7 @@ function submitForm() {
     
     
   let name = document.getElementById("name").value.trim();
+  getLatLong(name);
 
   //create a button with the submit name and append
   let newBtn = document.createElement("button");
@@ -43,7 +40,6 @@ function submitForm() {
   document.getElementById('nuts').appendChild(newDiv);
   document.getElementById(`newDiv${count}`).appendChild(newBtn);
   count++;
-  getLatLong(name);
 
 }
 
@@ -75,8 +71,7 @@ function getDaData(lat, lon){
     })
       .then(function(data){
         listOfCities.push(data);
-        localStorage.setItem("cities", JSON.stringify(listOfCities));
-
+        displayToday(data.city.name);
       })
 
 
