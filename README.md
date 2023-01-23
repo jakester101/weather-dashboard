@@ -15,7 +15,7 @@ This challenge had us utilize an OpenWeather API in order to make an app that di
 
 
 ## Screenshot
-(./assets/screenshot.png)
+![alt text](/assets/screenshot.png)
 
 
 ## Live Link
