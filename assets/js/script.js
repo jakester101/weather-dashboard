@@ -8,7 +8,6 @@ console.log(listOfCities);
 
 if (listOfCities == null) {
   listOfCities = [];
-  console.log(listOfCities);
 }
 
 
@@ -27,15 +26,27 @@ function closeForm() {
   document.getElementById("formContainer").style.display = "none";
 }
 
-
+var count = 0;
 function submitForm() {
     
-
-
+    
   let name = document.getElementById("name").value.trim();
+
+  //create a button with the submit name and append
+  let newBtn = document.createElement("button");
+  newBtn.innerText = name;
+  newBtn.setAttribute('class','btn cityBtn');
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute('class', 'controlpanelButtons')
+  newDiv.setAttribute('id',`newDiv${count}`)
+  document.getElementById('nuts').appendChild(newDiv);
+  document.getElementById(`newDiv${count}`).appendChild(newBtn);
+  newBtn.addEventListener("click", displayToday(name));
+  count++;
   getLatLong(name);
 
 }
+
   //this function grabs the latitude and longitude
   //of the city entered into the form because we need it for our true api call
 function getLatLong(name){
@@ -65,8 +76,9 @@ function getDaData(lat, lon){
       .then(function(data){
         listOfCities.push(data);
         localStorage.setItem("cities", JSON.stringify(listOfCities));
-        console.log(data);
+
       })
+
 
 }
 
@@ -170,8 +182,6 @@ function displayWeek(city){
     iconImg.src = iconUrl;
     let todaycity = document.getElementById('DAY5');
     todaycity.appendChild(iconImg);
-
-
 }
 
 
@@ -185,10 +195,7 @@ function displayWeek(city){
 
 
 
-
-
-
-displayToday('Atlanta');
+//displayToday('Atlanta');
 
 
 
@@ -211,5 +218,3 @@ function init() {
 
 init();
 
-//how we set the local storage
-//localStorage.setItem("cities", JSON.stringify(listOfCities));
