@@ -36,12 +36,12 @@ function submitForm() {
   let newBtn = document.createElement("button");
   newBtn.innerText = name;
   newBtn.setAttribute('class','btn cityBtn');
+  newBtn.setAttribute('onclick',`displayToday('${name}')`)
   let newDiv = document.createElement("div");
   newDiv.setAttribute('class', 'controlpanelButtons')
   newDiv.setAttribute('id',`newDiv${count}`)
   document.getElementById('nuts').appendChild(newDiv);
   document.getElementById(`newDiv${count}`).appendChild(newBtn);
-  newBtn.addEventListener("click", displayToday(name));
   count++;
   getLatLong(name);
 
@@ -183,20 +183,6 @@ function displayWeek(city){
     let todaycity = document.getElementById('DAY5');
     todaycity.appendChild(iconImg);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//displayToday('Atlanta');
-
 
 
 
