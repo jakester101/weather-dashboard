@@ -47,7 +47,7 @@ function submitForm() {
   //of the city entered into the form because we need it for our true api call
 function getLatLong(name){
 
-  let geoCode = `http://api.openweathermap.org/geo/1.0/direct?q=${name}&appid=${APIKey}`
+  let geoCode = `https://api.openweathermap.org/geo/1.0/direct?q=${name}&appid=${APIKey}`
 
   fetch(geoCode)
     .then(function(response){
@@ -102,7 +102,7 @@ function displayToday(name){
       document.getElementById('todayhum').innerHTML = `Humidity: ${hum}%`;
       //fetch weather icons
       let iconId = listOfCities[i].list[0].weather[0].icon;
-      let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+      let iconUrl = `https://openweathermap.org/img/wn/${iconId}.png`;
       let iconImg = document.createElement("img");
       iconImg.src = iconUrl;
       let todaycity = document.getElementById("todaycity");
@@ -145,7 +145,7 @@ function displayWeek(city){
 
     //fetch weather icons
     let iconId = city.list[i].weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+    let iconUrl = `https://openweathermap.org/img/wn/${iconId}.png`;
     let iconImg = document.createElement("img");
     iconImg.src = iconUrl;
     let todaycity = document.getElementById(`DAY${j}`);
@@ -172,7 +172,7 @@ function displayWeek(city){
     document.getElementById('day5').innerHTML = `Temp: ${tempF}\u00B0F<br>Wind: ${wind} MPH<br>Humidity: ${hum}%`;
 
     let iconId = city.list[39].weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/wn/${iconId}.png`;
+    let iconUrl = `https://openweathermap.org/img/wn/${iconId}.png`;
     let iconImg = document.createElement("img");
     iconImg.src = iconUrl;
     let todaycity = document.getElementById('DAY5');
